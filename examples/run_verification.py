@@ -5,7 +5,7 @@ Runs from the repository root:
     python examples/run_verification.py
 
 Outputs under ``docs/results/``:
-- ``sod_comparison.png/.svg``       cover: Sod tube at t = 0.2 s vs exact
+- ``sod_comparison.png/.svg``       cover: Sod tube at t = 0.2 vs exact
 - ``sod_evolution.gif``             animated density profiles vs exact
 - ``contact_convergence.png/.svg``  error vs grid for both schemes
 - ``sod_history.csv``, ``contact_convergence.csv``, ``run_summary.json``
@@ -186,7 +186,7 @@ def make_convergence_figure(errors):
     ax.loglog(ns, errors[1][0] * (ns / ns[0]) ** -1.0, "--", color=GRAY, lw=1.0, label=r"$\mathcal{O}(h)$")
     ax.loglog(ns, errors[2][0] * (ns / ns[0]) ** -2.0, ":", color=GRAY, lw=1.0, label=r"$\mathcal{O}(h^2)$")
     ax.set_xlabel("grid cells N [-]")
-    ax.set_ylabel("L1 density error vs exact advected contact [nondimensional]")
+    ax.set_ylabel("L1 density error [-]")
     ax.set_title("Convergence on the exact advected contact\n(u = 0.5 passive wave, t = 0.1; nondimensional)")
     ax.legend(frameon=False, fontsize=8)
     fig.tight_layout()
