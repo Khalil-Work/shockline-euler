@@ -48,13 +48,14 @@ API with parameters and error behavior: [docs/api.md](docs/api.md).
 
 ```bash
 python -m pip install -r requirements-dev.txt
-python -m pytest tests -q                       # 11 verification tests
+python -m pytest tests -q                       # 12 verification tests
 python examples/run_verification.py             # figures + GIF + raw data
 ```
 
 Verified runtimes: Python 3.13.5, NumPy 2.1.3, Windows 11; CI runs the
-suite on Ubuntu. Tests ≈ 25 s (several full Sod runs); results script
-≈ 40 s.
+suite on Ubuntu. The independent clean-environment run passed 12 tests in
+29.6 s on this Windows machine; the recorded results script took about 62 s.
+Runtime depends on the machine and environment.
 
 ## 🧱 Architecture and API
 
@@ -62,7 +63,7 @@ suite on Ubuntu. Tests ≈ 25 s (several full Sod runs); results script
 finite_volume/
 └── euler1d.py        # transforms, Rusanov flux, step_rusanov,
                       # step_muscl_ssp3, integrate, exact Riemann solver
-tests/test_euler1d.py # 11 verification tests
+tests/test_euler1d.py # 12 verification tests
 examples/run_verification.py
 docs/ model.md  api.md  verification.md  results/
 ```
@@ -95,7 +96,7 @@ Raw data: [docs/results/](docs/results) — `sod_history.csv`,
 
 ## ✅ Verification
 
-Eleven tests: hand-computed Rusanov flux (catches doubled dissipation),
+Twelve tests: hand-computed Rusanov flux (catches doubled dissipation),
 freestream consistency, conservation with equal boundary fluxes, the
 momentum-vs-pressure-force integral, positivity (first order), published Sod
 star state, analytic rarefaction-fan profile, exact-reference convergence

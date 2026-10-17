@@ -2,7 +2,8 @@
 
 All functions live in `finite_volume.euler1d` (re-exported from
 `finite_volume`). Arrays are shape `(3, n_cells)` conserved states unless
-stated. Units: SI with the domain length in meters.
+stated. Use one consistent unit system; every included benchmark and recorded
+figure uses nondimensional quantities, as defined in [model.md](model.md).
 
 ## State transforms
 
@@ -16,7 +17,8 @@ stated. Units: SI with the domain length in meters.
   ½(F_L+F_R) − ½ s_max (U_R−U_L), s_max the larger signal speed.
 - `step_rusanov(U, dt_max, dx, gamma, cfl=0.45) -> (U_new, dt)` — one
   first-order step; dt = min(dt_max, CFL-limited). Raises `ValueError` for
-  gamma ≤ 1 or dx ≤ 0 and `FloatingPointError` if the state becomes
+  invalid gamma or nonfinite/nonpositive dx, dt_max or cfl, and
+  `FloatingPointError` if the state becomes
   non-finite or non-physical.
 - `step_muscl_ssp3(U, dt_max, dx, gamma, cfl=0.40) -> (U_new, dt)` — one
   second-order MUSCL/SSP-RK3 step; every stage state is checked.
@@ -25,13 +27,16 @@ stated. Units: SI with the domain length in meters.
 
 - `integrate(U0, t_end, dx, gamma, order=2) -> U` — runs to exactly
   `t_end` (last step trimmed). `order=1` selects Rusanov, `order=2`
-  MUSCL-SSP3. Raises `ValueError` for non-positive `t_end` and
+  MUSCL-SSP3. Raises `ValueError` for nonfinite/nonpositive `t_end` or dx,
+  invalid gamma or unsupported order, and
   `RuntimeError` on zero time progress.
 
 ## Exact Riemann reference
 
 - `riemann_exact(WL, WR, gamma, tol=1e-12, maxit=50) -> (p_star, u_star)` —
   Newton iteration on the star pressure; `RuntimeError` if not converged.
+  Nonfinite/nonpositive primitive states, invalid gamma and vacuum-generating
+  expansions raise `ValueError` before iteration.
 - `sample_riemann(WL, WR, gamma, xi) -> (rho, u, p)` — exact solution at
   the self-similar coordinate ξ = (x − x₀)/t. **ξ must be a scalar** (the
   wave-branch logic is scalar); vectorize with a loop over points.
