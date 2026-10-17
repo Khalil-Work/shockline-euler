@@ -134,7 +134,8 @@ def _flux_divergence(U, gamma, dx, limiter):
     for i in range(UL.shape[1]):
         flux[:, i] = rusanov_flux(UL[:, i], UR[:, i], gamma)
     # Flux at the two boundary interfaces uses the boundary states
-    # themselves (zero-gradient ghost cells): waves leave, none enter.
+    # themselves (zero-gradient extrapolation). This is not an exact
+    # characteristic or non-reflecting boundary condition.
     left_ghost = U[:, :1]
     right_ghost = U[:, -1:]
     flux_left = rusanov_flux(left_ghost[:, 0], U[:, 0], gamma).reshape(3, 1)
@@ -284,6 +285,8 @@ def riemann_exact(WL, WR, gamma, tol=1e-12, maxit=50):
     cL = sound_speed(rhoL, pL, gamma)
     cR = sound_speed(rhoR, pR, gamma)
     num = cL + cR - 0.5 * (gamma - 1.0) * (uR - uL)
+    if num <= 0.0:
+        raise ValueError("vacuum-generating Riemann states are not supported")
     power = (gamma - 1.0) / (2.0 * gamma)
     denom_base = cL * pow(pL / np.sqrt(pL * pR), -power) + cR * pow(
         pR / np.sqrt(pL * pR), -power

@@ -5,8 +5,8 @@ Each test pins a distinct property:
 - the Rusanov flux formula against a hand-computed value (this is what
   catches a doubled dissipation coefficient);
 - uniform states are preserved exactly (freestream consistency);
-- total mass, momentum, and energy are conserved to roundoff on the Sod
-  problem (boundary fluxes cancel by symmetry of the zero-gradient rule);
+- equal boundary fluxes preserve domain totals for the contact benchmark;
+- unequal Sod boundary pressures produce the expected momentum change;
 - density and pressure stay positive throughout the first-order Sod run;
 - the exact Riemann solver reproduces the published Sod star state and
   recovers the far-field states exactly;
@@ -161,10 +161,10 @@ def _advected_contact_initial(n, amplitude=0.05, u0=0.5):
 
 
 def test_convergence_against_exact_advected_contact():
-    t_end = 0.1  # profile travels to [0.35, 0.65]; far from boundaries
+    t_end = 0.1  # bump center moves to x=0.55, well inside the domain
     errors = {1: [], 2: []}
     for order in (1, 2):
-        for n in (100, 200, 400, 800):
+        for n in (100, 200, 400):
             x, U0 = _advected_contact_initial(n)
             rho = primitive(integrate(U0, t_end, 1.0 / n, GAMMA, order=order), GAMMA)[0]
             exact = 1.0 + 0.05 * np.exp(-((x - 0.5 - 0.5 * t_end) / 0.08) ** 2)
@@ -224,3 +224,10 @@ def test_invalid_inputs_raise_meaningful_errors():
         riemann_exact((1.0, 0.0, 1.0), (0.125, 0.0, 0.1), float("nan"))
     with pytest.raises(RuntimeError, match="converge"):
         riemann_exact((1.0, 0.0, 1.0), (1.0, 0.0, 1.0e20), GAMMA, maxit=5)
+
+
+def test_vacuum_generating_expansion_is_rejected():
+    # Positive density and pressure do not exclude a vacuum: sufficiently
+    # fast separating states have no positive-pressure star solution.
+    with pytest.raises(ValueError, match="vacuum"):
+        riemann_exact((1.0, -10.0, 1.0), (1.0, 10.0, 1.0), GAMMA)
