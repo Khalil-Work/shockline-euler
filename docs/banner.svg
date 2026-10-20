@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="Shockline banner">
+  <defs>
+    <linearGradient id="dusk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0b1b3a"/>
+      <stop offset="0.45" stop-color="#3a2a52"/>
+      <stop offset="0.72" stop-color="#a0522d"/>
+      <stop offset="1" stop-color="#e8843c"/>
+    </linearGradient>
+    <linearGradient id="hot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffd97a"/>
+      <stop offset="1" stop-color="#ff8a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#dusk)"/>
+  <!-- shock tube: left dense cold, right light hot, shock front moving right -->
+  <g transform="translate(60,60)">
+    <!-- tube -->
+    <rect x="0" y="0" width="620" height="150" rx="10" fill="#00000030" stroke="#f0d9b8" stroke-width="2"/>
+    <!-- left (undisturbed, dense = tall darker fill) -->
+    <rect x="4" y="14" width="300" height="122" fill="#1d3a5f" opacity="0.85"/>
+    <!-- rarefaction fan wedge -->
+    <path d="M 304 14 L 380 14 L 380 136 Z" fill="#4a3f66" opacity="0.75"/>
+    <!-- contact discontinuity -->
+    <line x1="380" y1="10" x2="380" y2="140" stroke="#7fb8d8" stroke-width="3" stroke-dasharray="8 5"/>
+    <!-- shock front -->
+    <path d="M 470 10 L 470 140" stroke="url(#hot)" stroke-width="7"/>
+    <path d="M 470 10 L 560 34 L 560 116 L 470 140 Z" fill="#e8843c" opacity="0.28"/>
+    <text x="330" y="160" fill="#c9b6ee" font-family="Consolas, monospace" font-size="14" text-anchor="middle">rarefaction</text>
+    <text x="410" y="160" fill="#7fb8d8" font-family="Consolas, monospace" font-size="14" text-anchor="middle">contact</text>
+    <text x="512" y="160" fill="#ffd97a" font-family="Consolas, monospace" font-size="14" text-anchor="middle">shock</text>
+    <!-- labels -->
+    <text x="14" y="10" fill="#f0d9b8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">ρ_L, p_L (drive)</text>
+    <text x="560" y="10" fill="#f0d9b8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="end">ρ_R, p_R</text>
+  </g>
+  <!-- wordmark -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="740" y="118" fill="#ffffff" font-size="62" font-weight="800" letter-spacing="2">Shockline</text>
+    <text x="742" y="162" fill="#f0d9b8" font-size="21">1-D conservative Euler waves &amp; Riemann benchmarks</text>
+    <text x="742" y="200" fill="#caa46a" font-family="Consolas, monospace" font-size="15">Rusanov · MUSCL(MC)/SSP-RK3 · exact Riemann reference</text>
+  </g>
+</svg>
