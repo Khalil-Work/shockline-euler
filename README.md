@@ -10,13 +10,13 @@
 MUSCL(MC)/SSP-RK3 — verified against an exact Newton-iteration Riemann solver, with
 convergence orders 1 and 2 measured against an exact advected-contact reference.**
 
-[![tests](https://github.com/khalil-official/shockline-euler/actions/workflows/ci.yml/badge.svg)](https://github.com/khalil-official/shockline-euler/actions/workflows/ci.yml)
+[![tests](https://github.com/khalil-work/shockline-euler/actions/workflows/ci.yml/badge.svg)](https://github.com/khalil-work/shockline-euler/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![python](https://img.shields.io/badge/python-3.12%20%7C%203.13-blue.svg)](requirements.txt)
 [![tests](https://img.shields.io/badge/tests-12%20passing-brightgreen.svg)](tests)
 [![order](https://img.shields.io/badge/observed%20orders-0.96%20%2F%202.02-orange.svg)](docs/verification.md)
-[![repo stars](https://img.shields.io/github/stars/khalil-official/shockline-euler?style=flat&color=yellow)](https://github.com/khalil-official/shockline-euler/stargazers)
-[![last commit](https://img.shields.io/github/last-commit/khalil-official/shockline-euler?color=9cf)](https://github.com/khalil-official/shockline-euler/commits)
+[![repo stars](https://img.shields.io/github/stars/khalil-work/shockline-euler?style=flat&color=yellow)](https://github.com/khalil-work/shockline-euler/stargazers)
+[![last commit](https://img.shields.io/github/last-commit/khalil-work/shockline-euler?color=9cf)](https://github.com/khalil-work/shockline-euler/commits)
 
 [Quick start](#-quick-start) · [Method](#-model-method-and-stability) · [Animation](#%EF%B8%8F-results-gallery) · [Metrics](#-results-and-metrics-nondimensional) · [References](#-references)
 
