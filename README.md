@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner.svg" alt="Shockline banner: dusk-gradient shock tube with rarefaction fan, contact and shock front" width="100%">
+<img src="docs/banner.png" alt="Shockline banner: dusk-gradient shock tube with rarefaction fan, contact and shock front" width="100%">
 
 # ⚡ Shockline
 
@@ -61,12 +61,12 @@ behavior: [docs/api.md](docs/api.md).
 flowchart LR
     A[conserved U] --> B[primitive vars<br/>rho, u, p]
     B --> C1[Rusanov fluxes<br/>first order]
-    B --> C2[MUSCL(MC) reconstruct<br/>at interfaces]
+    B --> C2["MUSCL(MC) reconstruct<br/>at interfaces"]
     C2 --> D[Rusanov fluxes<br/>on reconstructed states]
     C1 --> E[SSP-RK3 stages]
     D --> E
     E --> F[telescoping update:<br/>U_new = U - dt/dx dF]
-    F --> G{positivity / CFL<br/>checks}
+    F --> G{"positivity / CFL<br/>checks"}
     G -- ok --> A
     G -- fail --> X[❌ raise]
 ```
