@@ -18,7 +18,7 @@ convergence orders 1 and 2 measured against an exact advected-contact reference.
 [![repo stars](https://img.shields.io/github/stars/khalil-work/shockline-euler?style=flat&color=yellow)](https://github.com/khalil-work/shockline-euler/stargazers)
 [![last commit](https://img.shields.io/github/last-commit/khalil-work/shockline-euler?color=9cf)](https://github.com/khalil-work/shockline-euler/commits)
 
-[Quick start](#-quick-start) · [Method](#-model-method-and-stability) · [Animation](#%EF%B8%8F-results-gallery) · [Metrics](#-results-and-metrics-nondimensional) · [References](#-references)
+[Homepage](https://khalil-work.github.io) · [Quick start](#-quick-start) · [Method](#-model-method-and-stability) · [Animation](#%EF%B8%8F-results-gallery) · [Metrics](#-results-and-metrics-nondimensional) · [References](#-references)
 
 </div>
 
