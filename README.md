@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner.png" alt="Shockline banner: dusk-gradient shock tube with rarefaction fan, contact and shock front" width="100%">
+<img src="docs/banner.gif" alt="Shockline banner: dusk-gradient shock tube with rarefaction fan, contact and shock front" width="100%">
 
 # ⚡ Shockline
 
